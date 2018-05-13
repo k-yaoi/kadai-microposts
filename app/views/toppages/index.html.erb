@@ -1,4 +1,5 @@
 <% if logged_in? %>
+  <h1>ログインしてる　<%= current_user %></h1>
   <div class="row">
     <aside class="col-md-4">
       <%= form_for(@micropost) do |f| %>
@@ -10,7 +11,9 @@
     </aside>
     <div class="col-xs-8">
       <%= render 'microposts/microposts', microposts: @microposts %>
+
     </div>
+
   </div>
 <% else %>
   <div class="center jumbotron">

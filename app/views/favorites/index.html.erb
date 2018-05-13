@@ -1,0 +1,33 @@
+<h1>お気に入り一覧</h1>
+
+<p><%  params[:id] %></p>
+
+<% if @favorites.any? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ユーザid</th>
+        <th>ユーザ名</th>
+        <th>メッセージID</th>
+        <th>メッセージ</th>
+      </tr>
+    </thead>
+    <tbody>
+     <% @favorites.each do |favorite| %>
+        <tr>
+          <td><%= favorite.user_id %></td>
+          <td><%= favorite.id %></td>
+          <td><%= favorite.content %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <ul>
+    <% @favorites.each do |favorite| %>
+      <li><%= favorite.user_id %> | <%= favorite.id %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>お気に入りはありません</p>
+<% end %>

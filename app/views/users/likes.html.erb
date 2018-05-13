@@ -1,0 +1,10 @@
+<h1>likesの一覧 ここにお気に入り一覧を表示するのだけど、やり方がわからん</h1>
+
+<h3><%= params[:id] %></h3>
+
+  <ul>
+    <% @likes.each do |like| %>
+      <li><%= like.user_id %> | <%= like.id %></li>
+    <% end %>
+  </ul>
+
