@@ -1,11 +1,22 @@
- <% if current_user.favorite?(micropost) %>
-    <%= form_for(current_user.favorites.find_by(micropost_id: micropost.id), html: { method: :delete }) do |f| %>
-      <%= hidden_field_tag :micropost_id, micropost.id %>
-      <%= f.submit 'お気に入りをやめる', class: 'btn btn-danger btn-block' %>
-    <% end %>
-  <% else %>
-    <%= form_for(current_user.microposts.build) do |f| %>
-      <%= hidden_field_tag :micropost_id, user.id %>
-      <%= f.submit 'お気に入り', class: 'btn btn-primary btn-block' %>
+<% if current_user.favorite?(micropost) %>
+
+  <%= form_for(current_user.favorites.find_by(micropost_id: micropost.id), html: { method: :delete }) do |f| %>
+    <%= hidden_field_tag :micropost_id, micropost.id %>
+    
+    <%= button_tag( class: "btn btn-warning pull-right") do %>
+      <%= content_tag :span, "", class: "glyphicon glyphicon-remove-sign" %>
     <% end %>
   <% end %>
+
+<% else %>
+
+  <%= form_for(current_user.favorites.build) do |f| %>
+    <%= hidden_field_tag :micropost_id, micropost.id %>
+
+    <%= button_tag( class: "btn btn-info btn-sm pull-right") do %>
+      <%= content_tag :span, " お気に入り", class: "glyphicon glyphicon-heart" %>
+    <% end %>
+  <% end %>
+
+<% end %>
+  

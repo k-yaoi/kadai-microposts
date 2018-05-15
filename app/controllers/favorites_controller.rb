@@ -11,7 +11,7 @@ class FavoritesController < ApplicationController
     current_user.favorite(micropost)
     flash[:success] = 'お気に入りに登録しました。'
     #redirect_to user
-    redirect_to micropost
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
@@ -19,6 +19,6 @@ class FavoritesController < ApplicationController
     current_user.unfavorite(micropost)
     flash[:success] = 'お気に入りを解除しました。'
     #redirect_to user
-    redirect_to micropost
+    redirect_back(fallback_location: root_path)
   end
 end
